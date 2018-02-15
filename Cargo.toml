@@ -1,0 +1,11 @@
+[package]
+name = "opentracing"
+version = "0.1.0"
+authors = ["Isaac Hier"]
+license = "Apache-2.0"
+description = "OpenTracing API for Rust"
+readme = "README.md"
+documentation = "http://opentracing.io/documentation"
+homepage = "http://opentracing.io"
+repository = "https://github.com/opentracing/opentracing-rust"
+keywords = ["distributed", "tracing"]
