@@ -1,0 +1,8 @@
+[package]
+name = "opentracing-mock"
+version = "0.1.0"
+authors = ["The OpenTracing Developers"]
+license = "Apache-2.0"
+homepage = "http://opentracing.io"
+repository = "https://github.com/opentracing/opentracing-rust"
+description = "A OpenTracing Mock Tracer"
