@@ -1,0 +1,13 @@
+[package]
+name = "opentracing-mock"
+version = "0.1.0" # remember to update html_root_url
+authors = ["The OpenTracing Developers"]
+license = "Apache-2.0"
+homepage = "http://opentracing.io"
+repository = "https://github.com/opentracing/opentracing-rust"
+description = "A OpenTracing Mock Tracer"
+documentation = "https://docs.rs/opentracing-mock"
+keywords = ["opentracing", "tracing"]
+
+[badges]
+maintenance = { status = "actively-developed" }

@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "opentracing-api",
+    "opentracing-noop",
+    "opentracing-mock"
+]
