@@ -1,0 +1,1 @@
+#![doc(html_root_url = "https://docs.rs/opentracing-api/0.1.0")]
