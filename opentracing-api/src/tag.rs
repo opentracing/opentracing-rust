@@ -171,6 +171,26 @@ impl fmt::Display for ParseTagsError {
     }
 }
 
+/// Tags Values per spec can be Strings, Booleans or Numerics.
+///
+/// Note that isize and usize are not included here since they
+/// are only meant to be used as pointers-sized types only.
+#[derive(Clone, PartialEq, PartialOrd, Debug)]
+pub enum TagValue {
+    String(String),
+    Boolean(bool),
+    I8(i8),
+    I16(i16),
+    I32(i32),
+    I64(i64),
+    U8(u8),
+    U16(u16),
+    U32(u32),
+    U64(u64),
+    F32(f32),
+    F64(f64),
+}
+
 #[cfg(test)]
 mod tests {
 
