@@ -5,5 +5,5 @@ mod tag;
 mod field;
 
 pub use context::SpanContext;
-pub use tag::{Tags, ParseTagsError};
+pub use tag::{ParseTagsError, Tags};
 pub use field::{Fields, ParseFieldsError};
