@@ -38,7 +38,7 @@ mod tests {
     fn get_items() {
         let mut items = HashMap::new();
         items.insert("key".into(), "value".into());
-        let context = TestContext { items: items };
+        let context = TestContext { items };
         let items: Vec<(&String, &String)> = context.baggage_items().collect();
         assert_eq!(items, [(&"key".into(), &"value".into())])
     }
