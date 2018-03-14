@@ -11,3 +11,6 @@ keywords = ["opentracing", "tracing"]
 
 [badges]
 maintenance = { status = "actively-developed" }
+
+[dependencies]
+opentracing-api = { path = "../opentracing-api" }
