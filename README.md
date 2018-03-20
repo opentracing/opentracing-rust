@@ -8,3 +8,7 @@ This library provides API and utilities for using [OpenTracing](http://opentraci
 
 In order to understand the Rust API, one must first be familiar with the [OpenTracing project](http://opentracing.io) and [terminology](http://opentracing.io/documentation/pages/spec.html) more specifically.
 
+## License
+
+[Apache 2.0 License](./LICENSE).
+
