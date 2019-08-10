@@ -12,6 +12,7 @@ const TAG_HTTP_METHOD: &str = "http.method";
 const TAG_PEER_IPV4: &str = "peer.ipv4";
 const TAG_PEER_IPV6: &str = "peer.ipv6";
 const TAG_PEER_SERVICE: &str = "peer.service";
+const TAG_PEER_ADDRESS: &str = "peer.address";
 const TAG_PEER_HOSTNAME: &str = "peer.hostname";
 const TAG_PEER_PORT: &str = "peer.port";
 const TAG_SAMPLING_PRIORITY: &str = "sampling.priority";
@@ -28,7 +29,7 @@ const TAG_MSGBUS_DEST: &str = "message_bus.destination";
 /// semantic information about the spans. Tracers may expose additional features based on these
 /// standardized data points. Tag names follow a general structure of namespacing.
 ///
-/// See also [Semantic Conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)
+/// See also [OpenTracing Specification Semantic Conventions v1.1](https://github.com/opentracing/specification/blob/1.1/semantic_conventions.md]
 #[derive(Clone, Copy, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
 pub enum Tags {
     /// A constant for setting the span kind to indicate that it represents a client span.
@@ -47,6 +48,10 @@ pub enum Tags {
     HttpStatus,
     /// HTTP_METHOD records the http method. Case-insensitive.
     HttpMethod,
+    /// PEER_ADDRESS records remote "address", suitable for use in a networking client library.
+    /// This may be a `"ip:port"`, a bare `"hostname"`, a FQDN,
+    /// or even a JDBC substring like `"mysql://prod-db:3306"`.
+    PeerAddress,
     /// PEER_HOST_IPV4 records IPv4 host address of the peer.
     PeerHostIpv4,
     /// PEER_HOST_IPV6 records the IPv6 host address of the peer.
@@ -94,6 +99,7 @@ impl Tags {
             Tags::PeerHostIpv4 => TAG_PEER_IPV4,
             Tags::PeerHostIpv6 => TAG_PEER_IPV6,
             Tags::PeerService => TAG_PEER_SERVICE,
+            Tags::PeerAddress => TAG_PEER_ADDRESS,
             Tags::PeerHostname => TAG_PEER_HOSTNAME,
             Tags::PeerPort => TAG_PEER_PORT,
             Tags::SamplingPriority => TAG_SAMPLING_PRIORITY,
@@ -127,6 +133,7 @@ impl FromStr for Tags {
             TAG_HTTP_URL => Ok(Tags::HttpUrl),
             TAG_HTTP_STATUS_CODE => Ok(Tags::HttpStatus),
             TAG_HTTP_METHOD => Ok(Tags::HttpMethod),
+            TAG_PEER_ADDRESS => Ok(Tags::PeerAddress),
             TAG_PEER_IPV4 => Ok(Tags::PeerHostIpv4),
             TAG_PEER_IPV6 => Ok(Tags::PeerHostIpv6),
             TAG_PEER_SERVICE => Ok(Tags::PeerService),
@@ -190,6 +197,7 @@ mod tests {
     fn test_tag_from_string() {
         assert_eq!(Ok(Tags::Error), Tags::from_str("error"));
         assert_eq!(Ok(Tags::PeerHostIpv4), "peer.ipv4".parse());
+        assert_eq!(Ok(Tags::PeerAddress), "peer.address".parse());
         assert_eq!(
             Err(ParseTagsError::UnknownTag),
             Tags::from_str("some_other_field")
